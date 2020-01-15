@@ -25,6 +25,16 @@ class PostsController < ApplicationController
   # Custom action stats
 
   def stats
+      # first one
+      @list = Comment.joins(:user).group('users.first_name').count
+      @list = @list.sort_by{ |name, count| count}.reverse[0]
+      # Second one
+      used_tags = PostTag.joins(:tag).group(:name).count
+      @sorted_tags = used_tags.sort_by { |tag, count| -count }
+      # third one
+      content = Post.pluck(:title, :content)
+      @content = content.sort_by{ |title, content| -content.length }
+    
   end
 
   # POST /posts
