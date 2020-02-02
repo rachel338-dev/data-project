@@ -77,10 +77,11 @@ PostTag.delete_all
 @first_post = Post.create(
     id: 1, 
     title: 'Miss Thrifty', 
-    content: 'One of the more',
+    content: 'Lorem ipsum dolor amet air plant williamsburg yuccie, ',
     user: @second_user, 
     category: @fifth_category,
-    tags: [@first_tag, @second_tag] )
+    tags: [@first_tag, @second_tag],
+    date: DateTime.strptime("1/03/2019 6:00", "%m/%d/%Y %H:%M") )
 
 @second_post = Post.create(
    id: 2,
@@ -89,7 +90,8 @@ PostTag.delete_all
     content: "A very inspiring blog that contains motivational stories about startups and the people who work in them and create them", 
     user: @first_user,
     category: @second_category,
-tags: [@first_tag, @third_tag])
+tags: [@first_tag, @third_tag],
+date: DateTime.strptime("1/03/2019 6:00", "%m/%d/%Y %H:%M") )
 
 @third_post = Post.create(
     id: 3, 
@@ -98,7 +100,8 @@ tags: [@first_tag, @third_tag])
     content:'A very well designed and slick blog that’s all about being your own boss and creating your own wealth',
     user: @third_user,
     category: @second_category,
-    tags: [@first_tag, @second_tag, @third_tag])
+    tags: [@first_tag, @second_tag, @third_tag],
+    date: DateTime.strptime("1/03/2019 6:00", "%m/%d/%Y %H:%M") )
 
 @fourth_post = Post.create(
     id: 4, 
@@ -107,7 +110,8 @@ tags: [@first_tag, @third_tag])
     content: 'Tech News For The Non Techie”. KnowTechie is a blog for people who love tech, but live outside the bubble.',
     user: @second_user,
     category: @third_category,
-    tags: [@first_tag, @second_tag, @fourth_tag])
+    tags: [@first_tag, @second_tag, @fourth_tag],
+    date: DateTime.strptime("1/03/2019 6:00", "%m/%d/%Y %H:%M") )
 
 @fifth_post = Post.create(
     id: 5, 
@@ -116,7 +120,8 @@ tags: [@first_tag, @third_tag])
     content: 'side Hustle is an online community of entrepreneurs who’s goal is to gain financial freedom through creating businesses that can help them achieve that',
     user: @second_user,
     category: @fourth_category,
-    tags: [@first_tag, @second_tag, @fifth_tag])
+    tags: [@first_tag, @second_tag, @fifth_tag],
+    date: DateTime.strptime("1/03/2019 6:00", "%m/%d/%Y %H:%M") )
 
 
 
