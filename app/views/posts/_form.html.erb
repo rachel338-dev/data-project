@@ -11,22 +11,42 @@
     </div>
   <% end %>
 
+
+<%= form_for @post do |f| %>
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
   </div>
 
   <div class="field">
-    <%= form.label :content %>
-    <%= form.text_field :content %>
+    <%= f.label :content %>
+    <%= f.text_area :content, rows: 10, cols: 60 %>
   </div>
 
   <div class="field">
-    <%= form.label :date %>
-    <%= form.datetime_select :date %>
+    <%= f.label :date %>
+    <%= f.datetime_select :date %>
   </div>
+
+  <div class="field">
+  <%= f.label :author %>
+  <%= f.select :user_id, @user %>
+</div>
+
+  <div class="field">
+  <%= f.label :category %>
+  <%= f.select :category_id, @category %>
+</div>
+
+
+<div class="field">
+ <%= f.label :tag %>
+  <%= f.text_field :name, @tag %>
+</div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= f.submit %>
   </div>
+
+<% end %>
 <% end %>

@@ -11,12 +11,20 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @post = Post.find(params[:id])
   end
 
   # GET /posts/new
   def new
-    @post = Post.new
+    @post = Post.new(post_params)
+    @user = User.all.map { |user| [user.first_name, user.id] }
+    @category = Category.all.map { |category| [category.name, category.id] }
+    @tag = Tag.new(tag_params)
+    @post.save
+    
   end
+
+
 
   # GET /posts/1/edit
   def edit
@@ -85,6 +93,11 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :content, :date)
+      params.require(:post).permit(:title, :content, :date, :user_id, :category_id, :tags_attributes[:name]) if params[:post]
     end
+
+    def tag_params
+     params.require(:tag).permit(:name) if params[:post]
+    end
+  
 end
