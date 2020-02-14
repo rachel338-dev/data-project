@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @post.user.first_name %>
+</p> 
+
+<p>
+  <strong>Content:</strong>
+  <%= @post.content %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @post.category.name %>
+</p>
+
+<p>
+<strong>Tags:</strong>
+ <% @post.tags.each do |p| %>
+ <%= p.name %>,  
+ <% end %>
+</p>
+
+
+<strong>Comments:</strong>
+ <% comments = Comment.where(post_id: @post.id).order(created_at: :asc) %>
+ <% comments.each do |comment| %>
+ <p>
+ <%= User.find(comment.user_id).first_name %>:
+ <%= comment.content %>
+ </p>
+ <% end %>
+
+
+
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
