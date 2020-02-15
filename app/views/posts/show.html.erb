@@ -37,8 +37,27 @@
  </p>
  <% end %>
 
+<h3><strong>New Comment: </strong></h3>
+  <%= form_with(model: @comment, local: true) do |form| %>
+  <%= hidden_field_tag(:post_id, value: @post.id) %>
+  <%= hidden_field_tag(:date, value: Time.now) %>
+ 
+ <div class="field">
 
+  <%= form.label :author %>
+  <%= form.select :user_id, @user %>
+</div> 
 
+<div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content, rows: 10, cols: 60 %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  
+  </div>
+<% end %>
 
 
 
