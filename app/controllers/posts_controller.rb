@@ -11,9 +11,10 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
-    @post = Post.find(params[:id])
     @comment = Comment.new
+    @post = Post.find(params[:id])
     @user = User.all.map { |user| [user.first_name, user.id] }
+    
   end
 
   # GET /posts/new
@@ -73,6 +74,9 @@ class PostsController < ApplicationController
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
+
+    hidden_field(@post_id, @comment)
+
   end
 
 
