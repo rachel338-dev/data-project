@@ -1,0 +1,30 @@
+<h3><strong>New Comment: </strong></h3>
+  <%= form_with(model: @comments, local: true) do |form| %>
+  <%= hidden_field_tag(:post_id, value: @post.id) %>
+  <%= hidden_field_tag(:date, value: Time.now) %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2> <%# there was no @ for post.errors.count, I just added it. check back later if needs to be changed back%>
+
+      <ul>
+        <% @comment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ <div class="field">
+
+  <%= form.label :author %>
+  <%= form.select :user_id, @user %>
+</div> 
+
+<div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content, rows: 10, cols: 60 %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit value="Add Comment"%>
+  </div>
+<% end %>
