@@ -1,0 +1,7 @@
+<h2><%= @tag.name %> posts</h2>
+
+<% @posts.each do |post| %>
+  <% posts_with_tag = Post.find(post) %>
+  <h3><%= link_to posts_with_tag.title, posts_with_tag %></h3>
+  <em><%= time_ago_in_words(posts_with_tag.date) %> ago</em>
+<% end %>

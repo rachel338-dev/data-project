@@ -75,6 +75,18 @@ class PostsController < ApplicationController
     end
   end
 
+
+
+  def posts_with_category
+    @category = Category.find(params[:id])
+    @posts = Post.where(category_id: @category).pluck(:id)
+  end
+
+  def posts_with_tag
+    @tag = Tag.find(params[:id])
+    @posts = PostTag.where(tag_id: @tag).pluck(:post_id)
+  end
+
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy

@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   get '/stats', to: 'posts#stats'
   resources :posts
   resources :comments
-
+  get '/posts_with_tag/:id', to: 'posts#posts_with_tag', as: :posts_with_tag
+  get '/posts_with_category/:id', to: 'posts#posts_with_category', as: :posts_with_category
   root 'posts#index'
   
     
