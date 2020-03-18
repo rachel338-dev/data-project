@@ -1,7 +1,7 @@
 <h3><strong>New Comment: </strong></h3>
   <%= form_with(model: @comment, local: true) do |form| %>
-  <%= form.hidden_field_tag(:post_id, value: @post.id) %>
-  <%= form.hidden_field_tag(:date, value: Time.now) %>
+  <%= form.hidden_field(:post_id, value: @post.id) %>
+  <%= form.hidden_field(:date, value: Time.now) %>
   <% if @comment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2> 
@@ -21,7 +21,7 @@
 
 <div class="field">
     <%= form.label :comment %>
-    <%= form.text_area :comment, rows: 10, cols: 60 %>
+    <%= form.text_area :content, rows: 10, cols: 60 %>
   </div>
 
   <div class="actions">

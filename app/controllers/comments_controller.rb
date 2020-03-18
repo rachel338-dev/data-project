@@ -7,7 +7,7 @@ def create
 
   
   if @comment.save
-   # flash[:success] = "Comment successfully added"
+   flash[:success] = "Comment successfully added"
     redirect_to post_path(@post)
   else 
     @user = User.all.map { |user| [user.first_name, user.id] }
