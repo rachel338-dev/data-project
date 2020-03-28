@@ -117,6 +117,10 @@ GEM
       multi_json (~> 1.11)
       os (>= 0.9, < 2.0)
       signet (~> 0.12)
+    graphiql-rails (1.7.0)
+      railties
+      sprockets-rails
+    graphql (1.10.3)
     httpclient (2.8.3)
     i18n (1.7.0)
       concurrent-ruby (~> 1.0)
@@ -152,6 +156,8 @@ GEM
     puma (4.3.1)
       nio4r (~> 2.0)
     rack (2.0.8)
+    rack-cors (1.1.1)
+      rack (>= 2.0.0)
     rack-proxy (0.6.5)
       rack
     rack-test (1.1.0)
@@ -273,10 +279,13 @@ DEPENDENCIES
   bootstrap-sass
   byebug
   capybara (>= 2.15)
+  graphiql-rails
+  graphql
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
   mysql2 (>= 0.4.4)
   puma (~> 4.1)
+  rack-cors
   rails (~> 6.0.2, >= 6.0.2.1)
   sass-rails (>= 6)
   selenium-webdriver
