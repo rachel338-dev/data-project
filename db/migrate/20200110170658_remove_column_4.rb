@@ -1,5 +1,5 @@
 class RemoveColumn4 < ActiveRecord::Migration[6.0]
   def change
-    remove_column :posts, :tag_id, :integer
+   # remove_column :posts, :tag_id, :integer
   end
 end

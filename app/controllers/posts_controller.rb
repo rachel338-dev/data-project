@@ -11,12 +11,21 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @comment = Comment.new
+    @post = Post.find(params[:id])
+    @user = User.all.map { |user| [user.first_name, user.id] }
+    
   end
 
   # GET /posts/new
   def new
     @post = Post.new
+    @user = User.all.map { |user| [user.first_name, user.id] }
+    @category = Category.all.map { |category| [category.name, category.id] }
+    3.times { @post.tags.build }
   end
+
+
 
   # GET /posts/1/edit
   def edit
@@ -65,6 +74,21 @@ class PostsController < ApplicationController
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
+
+    hidden_field(@post_id, @comment)
+
+  end
+
+
+
+  def posts_with_category
+    @category = Category.find(params[:id])
+    @posts = Post.where(category_id: @category).pluck(:id)
+  end
+
+  def posts_with_tag
+    @tag = Tag.find(params[:id])
+    @posts = PostTag.where(tag_id: @tag).pluck(:post_id)
   end
 
   # DELETE /posts/1
@@ -85,6 +109,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :content, :date)
-    end
+      params.require(:post).permit(:title, :content, :date, :user_id, :category_id, tags_attributes: [:name])
+    end  
+  
 end

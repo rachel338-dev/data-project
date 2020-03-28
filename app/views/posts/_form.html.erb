@@ -1,4 +1,4 @@
-<%= form_with(model: post, local: true) do |form| %>
+<%= form_with(model: post, local: true) do |f| %>
   <% if post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -10,23 +10,40 @@
       </ul>
     </div>
   <% end %>
-
+]
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
   </div>
 
   <div class="field">
-    <%= form.label :content %>
-    <%= form.text_field :content %>
+    
+    <%= f.text_area :content, rows: 10, cols: 60 %>
   </div>
 
   <div class="field">
-    <%= form.label :date %>
-    <%= form.datetime_select :date %>
+    <%= f.label :date %>
+    <%= f.date_select :date %>
   </div>
+
+  <div class="field">
+  <%= f.label :author %>
+  <%= f.select :user_id, @user %>
+</div>
+
+  <div class="field">
+  <%= f.label :category %>
+  <%= f.select :category_id, @category %>
+</div>
+
+
+<%= f.fields_for :tags do |tag_form| %>
+<strong><%= tag_form.label :tag_name %></strong>
+      <%= tag_form.text_field :name %>
+  <% end %>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= f.submit %>
   </div>
+
 <% end %>

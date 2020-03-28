@@ -1,0 +1,6 @@
+<h2><%= @category.name %> posts</h2>
+<% @posts.each do |post| %>     
+  <% list_of_posts = Post.find(post) %>
+  <h3><%= link_to list_of_posts.title, list_of_posts %></h3>
+  <em><%= time_ago_in_words(list_of_posts.date) %> ago</em>
+<% end %>
