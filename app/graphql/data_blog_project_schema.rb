@@ -1,4 +1,4 @@
-class DataProjectSchema < GraphQL::Schema
+class DataBlogProjectSchema < GraphQL::Schema
   mutation(Types::MutationType)
   query(Types::QueryType)
 

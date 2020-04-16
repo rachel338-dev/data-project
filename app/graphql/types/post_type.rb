@@ -5,6 +5,7 @@ module Types
     field :content, String, null: false
     field :date, String, null: false
     field :user, Types::UserType, null: false,
+    field :category, Types::CategoryType, null: true 
     description: "This post's author."
     field :comments, [Types::CommentType], null: false, 
     description: "This post's comments."
